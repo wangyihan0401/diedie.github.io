@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>多个元素拖拽</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mark {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            color: #fff;
+            font-family: "微软雅黑";
+            font-size: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        img{
+            width: 10vw;
+        }
+        .buttontype{
+            width: 10vw;
+        }
+    </style>
+</head>
+
+<body style="overflow:hidden">
+    <div onclick="addbutton()"><img class="buttontype" src="./img/add.png" alt=""></div>
+    <div onclick="subbutton()"><img class="buttontype" src="./img/sub.png" alt=""></div>
+    <div style="top: 10px; left: 140px;" class="mark"><img src="./img/littleman.png" alt=""></div>
+    <div class="mark" style="top: 200px; left: 300px;"><img src="./img/littleman.png" alt=""></div>
+    <div style="top: 500px; left: 200px;" class="mark"><img src="./img/littleman.png" alt=""></div>
+</body>
+
+</html>
+<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var $mark = null;
+    //添加元素
+    function addbutton() {
+        $("body").append('<div style="top: 10px; left: 140px;" class="mark"><img src="./img/littleman.png" alt=""></div>');
+        $mark = $('.mark');
+        $mark.each(function (item, indexx) {
+            $(this).bind('touchstart', downFn)
+        })
+    }
+    //删除元素
+    function subbutton() {
+        $mark = $('.mark');
+        for(let i=$mark.length-1;i>=0;i--){
+            $mark[i].remove();
+            break;
+        }
+    }
+    $(document).ready(function () {
+        $mark = $('.mark');
+        $mark.each(function (item, indexx) {
+            $(this).bind('touchstart', downFn)
+        })
+    });
+    function downFn(e) {
+        //当鼠标按下的时候，记录当前的鼠标信息值和盒子当前位置（可以用全局变量也可以用增加自定义属性）
+        $(this).attr({
+            markLeft: parseFloat($(this).css('left')),
+            markTop: parseFloat($(this).css('top')),
+            markX: e.touches[0].clientX,
+            markY: e.touches[0].clientY
+        })
+        this.Move = moveFn.bind(this)//给当前元素增加一个Move方法，在用bind改变this关键字
+        this.UP = upFn.bind(this)
+
+        if (this.setCapture) { //将鼠标和这个盒子绑定在一起，要不然鼠标移动过快盒子跟不上啊注意：ie火狐都兼容，反倒是谷歌不兼容
+            this.setCapture()
+            $(this).bind('touchmove', moveFn).bind('touchend', upFn)//给当前元素绑定鼠标移动和离开方法
+
+        } else {
+            //如果是火狐浏览器
+            $(document).bind('touchmove', this.Move).bind('touchend', this.UP)//给整个文档绑定方法
+
+        }
+        e.preventDefault();//阻止默认行为
+    }
+    function moveFn(e) {
+        //用房钱鼠标信息的xy值减去开始时候的xy值，就是移动的距离，那再在mark的left和top的基础上加上这个距离，就是移动后的位置了
+        //获取当前xy值
+        var changeX = e.touches[0].clientX - $(this).attr('markX');//现在坐标减去原始坐标等于移动的距离
+        var changeY = e.touches[0].clientY - $(this).attr('markY');
+        var curL = parseFloat($(this).attr('markLeft')) + changeX;//原始的left加上移动的距离等于现在的left
+        var curY = parseFloat($(this).attr('markTop')) + changeY
+        $(this).css({
+            'left': curL,
+            'top': curY
+        })
+    }
+    function upFn(e) {
+        if (this.releaseCapture) {
+            this.releaseCapture() //将鼠标和盒子解绑
+            $(this).unbind('touchmove', moveFn).unbind('touchend', upFn)
+        } else {
+            $(document).unbind('touchmove', this.moveFn)
+            $(document).unbind('touchmove', this.Move).unbind('touchend', this.UP)
+        }
+    }
+    
+</script>
