@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>我们一起练功夫</title>
+    <title>我们一起练功夫(布阵)</title>
     <style type="text/css">
         * {
             margin: 0;
@@ -21,8 +21,8 @@
             font-size: 18px;
             border-radius: 50%;
             cursor: pointer;
+            background: black;
         }
-
         img{
             width: 11vw;
         }
@@ -32,21 +32,20 @@
     </style>
 </head>
 
-<body style="overflow:hidden">
+<body>
     <div onclick="addbutton()"><img class="buttontype" src="./img/add.png" alt=""></div>
     <div onclick="subbutton()"><img class="buttontype" src="./img/sub.png" alt=""></div>
-    <div style="top: 10px; left: 140px;" class="mark"><img src="./img/littleman.png" alt=""></div>
-    <div class="mark" style="top: 200px; left: 300px;"><img src="./img/littleman.png" alt=""></div>
-    <div style="top: 500px; left: 200px;" class="mark"><img src="./img/littleman.png" alt=""></div>
+    <div style="top: 10px; left: 140px;" class="mark"></div>
+    <div style="top: 200px; left: 300px;" class="mark"></div>
+    <div style="top: 500px; left: 200px;" class="mark"></div>
 </body>
 
 </html>
 <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     var $mark = null;
-    //添加元素
     function addbutton() {
-        $("body").append('<div style="top: 10px; left: 140px;" class="mark"><img src="./img/littleman.png" alt=""></div>');
+        $("body").append('<div style="top: 10px; left: 140px;" class="mark"></div>');
         $mark = $('.mark');
         $mark.each(function (item, indexx) {
             $(this).bind('touchstart', downFn)
@@ -109,5 +108,4 @@
             $(document).unbind('touchmove', this.Move).unbind('touchend', this.UP)
         }
     }
-    
 </script>
