@@ -26,8 +26,8 @@
 
         .mark-green {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             text-align: center;
             line-height: 150px;
             color: #fff;
@@ -41,8 +41,8 @@
 
         .mark-yellow {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             text-align: center;
             line-height: 150px;
             color: #fff;
@@ -50,14 +50,14 @@
             font-size: 18px;
             border-radius: 50%;
             cursor: pointer;
-            background: yellow;
+            background: rgb(252, 210, 0);
             z-index: 100;
         }
 
         .mark-red {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             text-align: center;
             line-height: 150px;
             color: #fff;
@@ -87,9 +87,9 @@
             font-size: 18px;
             border-radius: 50%;
             cursor: pointer;
-            background: yellow;
-            width: 60px;
-            height: 60px;
+            background: rgb(252, 210, 0);
+            width: 80px;
+            height: 80px;
             display: inline-block;
             margin-top: 10%;
         }
@@ -99,8 +99,8 @@
             border-radius: 50%;
             cursor: pointer;
             background: green;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             display: inline-block;
             }
 
@@ -109,8 +109,8 @@
             border-radius: 50%;
             cursor: pointer;
             background: red;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             display: inline-block;
         }
         span{
@@ -122,18 +122,18 @@
 <body>
     <div id="yellow"></div><span>黄色</span>
     <div class="buttonparent">
-        <div onclick="addbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/addyellow.png" alt=""></div>
-        <div onclick="subbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/sub.png" alt=""></div>
+        <div onclick="addbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
+        <div onclick="subbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
     </div>
     <div id="green"></div><span>绿色</span>
     <div class="buttonparent">
-        <div onclick="addbutton('green')" class="buttondiv"><img class="buttontype" src="./img/add.png" alt=""></div>
-        <div onclick="subbutton('green')" class="buttondiv"><img class="buttontype" src="./img/sub.png" alt=""></div>
+        <div onclick="addbutton('green')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
+        <div onclick="subbutton('green')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
     </div>
     <div id="red"></div><span>红色</span>
     <div class="buttonparent">
-        <div onclick="addbutton('red')" class="buttondiv"><img class="buttontype" src="./img/addred.png" alt=""></div>
-        <div onclick="subbutton('red')" class="buttondiv"><img class="buttontype" src="./img/sub.png" alt=""></div>
+        <div onclick="addbutton('red')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
+        <div onclick="subbutton('red')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
     </div>
     <div style="top: 120px; left: 700px;" class="mark-green mark" id="mark"></div>
     <div style="top: 200px; left: 300px;" class="mark-red mark" id="mark"></div>
