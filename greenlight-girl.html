@@ -105,6 +105,7 @@
             }
 
         #red {
+            margin-top: 10%;
             font-size: 18px;
             border-radius: 50%;
             cursor: pointer;
@@ -120,24 +121,12 @@
 </head>
 
 <body>
-    <div id="yellow"></div><span>黄色</span>
-    <div class="buttonparent">
-        <div onclick="addbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
-        <div onclick="subbutton('yellow')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
-    </div>
-    <div id="green"></div><span>绿色</span>
-    <div class="buttonparent">
-        <div onclick="addbutton('green')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
-        <div onclick="subbutton('green')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
-    </div>
     <div id="red"></div><span>红色</span>
     <div class="buttonparent">
         <div onclick="addbutton('red')" class="buttondiv"><img class="buttontype" src="./img/addblack.png" alt=""></div>
         <div onclick="subbutton('red')" class="buttondiv"><img class="buttontype" src="./img/subblack.png" alt=""></div>
     </div>
-    <div style="top: 120px; left: 700px;" class="mark-green mark" id="mark"></div>
     <div style="top: 200px; left: 300px;" class="mark-red mark" id="mark"></div>
-    <div style="top: 500px; left: 900px;" class="mark-yellow mark" id="mark"></div>
     <div id="backimg">
     </div>
 </body>
@@ -147,7 +136,7 @@
 <script type="text/javascript">
     var $mark = null;
     function addbutton(color) {
-        $("body").append('<div style="top: 10px; left: 140px;" class="mark-'+color+' mark"></div>');
+        $("body").append('<div style="top: 40vh; left: 140px;" class="mark-'+color+' mark"></div>');
         $mark = $('.mark');
         console.info($mark)
         $mark.each(function (item, indexx) {
